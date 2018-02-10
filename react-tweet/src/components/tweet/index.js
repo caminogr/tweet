@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default class Tweet extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    // this.state = {
+      // tweets: [],
+    // }
+  }
+
   componentWillMount() {
   }
 
@@ -9,6 +16,7 @@ export default class Tweet extends React.PureComponent {
       <div>
         <div>
           <TweetForm />
+          <TweetList />
         </div>
       </div>
     )
@@ -33,8 +41,9 @@ class TweetForm extends React.PureComponent {
   }
 
   handleSubmit() {
-    console.log("submit")
+    console.log(this.state.tweets)
   }
+
 
   render() {
     return (
@@ -46,3 +55,33 @@ class TweetForm extends React.PureComponent {
   }
 }
 
+class TweetList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweets: [
+        "hoge",
+        "fuga",
+        "piyo",
+      ],
+    }
+  }
+
+  render() {
+    const tweets = this.state.tweets
+
+    return (
+      <ul>
+      {tweets.length ? (
+        tweets.map((tweet, i) => 
+          <li className="Tweet">
+            {tweet}
+          </li>
+        )
+      ) : (
+        null
+      )}
+    </ul>
+    )
+  }
+}
