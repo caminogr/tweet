@@ -15,6 +15,7 @@ export default class TweetForm extends React.PureComponent {
 
   handleSendTweet() {
     this.props.sendTweet(this.state.textValue)
+    this.setState({textValue: ''})
   }
 
   changeText(e) {

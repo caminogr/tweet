@@ -7,11 +7,7 @@ export default class Tweet extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: [
-        {id: 0, content: "hoge"},
-        {id: 1, content: "fuga"},
-        {id: 2, content: "piyo"},
-      ],
+      tweets: [],
     }
   }
 
@@ -20,10 +16,12 @@ export default class Tweet extends React.PureComponent {
   }
 
   sendTweet(value) {
-    console.log(value)
+    const sum = this.state.tweets.length
+    this.setState({ tweets: this.state.tweets.concat([{id: sum+1, content: value}]) })
   }
 
   render() {
+
     return (
       <div>
         <div>
