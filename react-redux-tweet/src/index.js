@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import Root from './components'
 
@@ -10,8 +12,8 @@ window.addEventListener('load', () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <Root />,
-    </Provider>
+      <Root />
+    </Provider>,
     container,
   )
 });
