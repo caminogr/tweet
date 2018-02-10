@@ -4,10 +4,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import Root from './components'
+import reducer from './reducers'
 
 window.addEventListener('load', () => {
 
-  const store =createStore(reducer)
+  const store = createStore(reducer)
   const container = document.getElementById('app');
 
   ReactDOM.render(
