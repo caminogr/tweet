@@ -3,20 +3,29 @@ import React from 'react';
 export default class Tweet extends React.PureComponent {
   constructor(props) {
     super(props);
-    // this.state = {
-      // tweets: [],
-    // }
+    this.state = {
+      tweets: [
+        {id: 0, content: "hoge"},
+        {id: 1, content: "fuga"},
+        {id: 2, content: "piyo"},
+      ],
+    }
   }
 
   componentWillMount() {
+    this.sendTweet = this.sendTweet.bind(this);
+  }
+
+  sendTweet(value) {
+    console.log(value)
   }
 
   render() {
     return (
       <div>
         <div>
-          <TweetForm />
-          <TweetList />
+          <TweetForm sendTweet={this.sendTweet}/>
+          <TweetList tweets={this.state.tweets}/>
         </div>
       </div>
     )
@@ -32,22 +41,22 @@ class TweetForm extends React.PureComponent {
   }
 
   componentWillMount() {
+    this.handleSendTweet = this.handleSendTweet.bind(this);
     this.changeText = this.changeText.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSendTweet() {
+    this.props.sendTweet(this.state.textValue)
   }
 
   changeText(e) {
     this.setState({textValue: e.target.value});
   }
 
-  handleSubmit() {
-    console.log(this.state.tweets)
-  }
-
-
   render() {
+
     return (
-      <form action="javascript:void(0)" onSubmit={this.handleSubmit}>
+      <form action="javascript:void(0)" onSubmit={this.handleSendTweet}>
         <input type="text" value={this.state.textValue} onChange={this.changeText} />
         <button type="submit">送信</button>
       </form>
@@ -56,26 +65,16 @@ class TweetForm extends React.PureComponent {
 }
 
 class TweetList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tweets: [
-        "hoge",
-        "fuga",
-        "piyo",
-      ],
-    }
-  }
 
   render() {
-    const tweets = this.state.tweets
+    const tweets = this.props.tweets
 
     return (
       <ul>
       {tweets.length ? (
         tweets.map((tweet, i) => 
-          <li className="Tweet">
-            {tweet}
+          <li className="Tweet" key={tweet.id}>
+            {tweet.content}
           </li>
         )
       ) : (
