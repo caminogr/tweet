@@ -1,12 +1,16 @@
 const initialState = {
-  id: 0,
-  content: "",
+  tweets: [],
 }
 
-export default function reduer(state = initialState, action) {
+export default function tweetReduer(state = initialState, action) {
   switch(action.type) {
     case "TWEETS/CREATE":
-      console.log("createAction")
+      const tweets = [].concat(state.tweets);
+      const index = state.tweets.length+1
+      tweets.push({ id: index, content: action.content })
+      const nextState = {...state, tweets}
+
+      return nextState
 
     default: 
       return state
