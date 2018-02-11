@@ -1,13 +1,25 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as TweetActions from '../../actions/tweet'
-
 class TweetList extends React.PureComponent {
+
   render() {
+    const {tweets} = this.props
+
     return (
-      <div>TweetList</div>
+      <ul>
+        {tweets.length ? (
+          tweets.map((tweet) => 
+            <li key={tweet.id}>
+              {tweet.content}
+            </li>
+          )
+        ) : (
+        <div>
+          投稿なし
+        </div>
+        )}
+      </ul>
     )
   }
 }
@@ -18,13 +30,13 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    tweetActions: bindActionCreators(TweetActions, dispatch),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     tweetActions: bindActionCreators(TweetActions, dispatch),
+//   };
+// }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {},
 )(TweetList);
