@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class TweetList extends React.PureComponent {
-
-  render() {
-    const {tweets} = this.props
+const TweetList = (props) => {
 
     return (
       <ul>
-        {tweets.length ? (
-          tweets.map((tweet) => 
+        {props.tweets.length ? (
+          props.tweets.map((tweet) => 
             <li key={tweet.id}>
               {tweet.content}
             </li>
@@ -21,7 +18,7 @@ class TweetList extends React.PureComponent {
         )}
       </ul>
     )
-  }
+  // }
 }
 
 function mapStateToProps(state) {
