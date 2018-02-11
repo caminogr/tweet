@@ -8,13 +8,15 @@ export default class TweetList extends React.PureComponent {
     return (
       <ul>
       {tweets.length ? (
-        tweets.map((tweet, i) => 
-          <li className="Tweet" key={tweet.id}>
+        tweets.map((tweet) => 
+          <li key={tweet.id}>
             {tweet.content}
           </li>
         )
       ) : (
-        null
+        <div>
+          投稿なし
+        </div>
       )}
     </ul>
     )

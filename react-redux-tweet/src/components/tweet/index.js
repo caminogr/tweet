@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-import TweetForm from './tweetForm'
-import TweetList from './tweetList'
+import TweetForm from './tweetForm';
+import TweetList from './tweetList';
 
 export default class Tweet extends React.PureComponent {
   render() {
     return (
-      <div>
+      <Fragment>
         <TweetForm />
         <TweetList />
-      </div>
+      </Fragment>
     )
   }
 }

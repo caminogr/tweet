@@ -13,7 +13,8 @@ export default class TweetForm extends React.PureComponent {
     this.changeText = this.changeText.bind(this);
   }
 
-  handleSendTweet() {
+  handleSendTweet(e) {
+    e.preventDefault();
     this.props.sendTweet(this.state.textValue)
     this.setState({textValue: ''})
   }
@@ -25,7 +26,7 @@ export default class TweetForm extends React.PureComponent {
   render() {
 
     return (
-      <form action="javascript:void(0)" onSubmit={this.handleSendTweet}>
+      <form onSubmit={this.handleSendTweet}>
         <input type="text" value={this.state.textValue} onChange={this.changeText} />
         <button type="submit">送信</button>
       </form>

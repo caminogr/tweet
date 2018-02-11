@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-import TweetForm from './tweetForm'
-import TweetList from './tweetList'
+import TweetForm from './tweetForm';
+import TweetList from './tweetList';
 
 export default class Tweet extends React.PureComponent {
   constructor(props) {
@@ -23,12 +23,10 @@ export default class Tweet extends React.PureComponent {
   render() {
 
     return (
-      <div>
-        <div>
-          <TweetForm sendTweet={this.sendTweet}/>
-          <TweetList tweets={this.state.tweets}/>
-        </div>
-      </div>
+      <Fragment>
+        <TweetForm sendTweet={this.sendTweet}/>
+        <TweetList tweets={this.state.tweets}/>
+      </Fragment>
     )
   }
 }
